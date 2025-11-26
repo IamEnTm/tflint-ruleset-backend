@@ -9,7 +9,7 @@ platforms=(
 for platform in "${platforms[@]}"; do
   os=${platform%/*}
   arch=${platform#*/}
-  out="tflint-ruleset-backend/tflint-ruleset-backend_${os}_${arch}"
+  out="tflint-ruleset-backend/tflint-ruleset-backend"
 
   if [[ "$os" == "windows" ]]; then
     out="$out.exe"
@@ -17,5 +17,11 @@ for platform in "${platforms[@]}"; do
 
   env GOOS=$os GOARCH=$arch go build -o "$out"
 
-  zip "${out%.exe}.zip" "$out"
+  zip "tflint-ruleset-backend/tflint-ruleset-backend_${os}_${arch}.zip" "$out"
+  rm "$out"
 done
+
+pushd tflint-ruleset-backend
+ls tflint-ruleset-backend_*.zip
+sha256sum tflint-ruleset-backend_*.zip > checksums.txt
+popd
