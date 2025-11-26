@@ -17,7 +17,7 @@ for platform in "${platforms[@]}"; do
 
   env GOOS=$os GOARCH=$arch go build -o "$out"
 
-  zip "tflint-ruleset-backend/tflint-ruleset-backend_${os}_${arch}.zip" "$out"
+  zip -j "tflint-ruleset-backend/tflint-ruleset-backend_${os}_${arch}.zip" "$out"
   rm "$out"
 done
 
