@@ -77,6 +77,25 @@ plugin "backend" {
 
 **Note:** The `signing_key` is required to verify the authenticity of the plugin. You can find the public key in the `public_key.asc` file included with each release, or in the repository root.
 
+### Troubleshooting
+
+If you encounter the error `Failed to check checksums.txt signature: openpgp: invalid argument: no armored data found`:
+
+1. **Verify the signature file exists**: Ensure `checksums.txt.sig` is included in the release and is not empty.
+
+2. **Check file encoding**: The signature file must use Unix line endings (LF). If you're manually creating releases, ensure the file isn't corrupted during upload.
+
+3. **Regenerate the signature**: If the signature file is corrupted, rebuild the release:
+   ```bash
+   export GPG_KEY_ID=your-key-id
+   ./build.sh
+   ```
+
+4. **Verify locally**: You can verify the signature manually:
+   ```bash
+   gpg --verify checksums.txt.sig checksums.txt
+   ```
+
 ## Rules
 
 |Name|Description|Severity|Enabled|Link|
