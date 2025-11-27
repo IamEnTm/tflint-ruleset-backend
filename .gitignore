@@ -1,2 +1,13 @@
 # don't track built binary
 /dist
+
+# GPG private keys (never commit these!)
+*.gpg
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Environment files with key IDs
+.env
+.env.local
