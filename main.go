@@ -12,7 +12,7 @@ func main() {
 			Name:    "backend",
 			Version: "0.1.0",
 			Rules: []tflint.Rule{
-				rules.NewS3BackendLockfileRule(),
+				rules.NewBackendS3LockfileRule(),
 			},
 		},
 	})

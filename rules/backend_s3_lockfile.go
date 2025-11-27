@@ -6,27 +6,27 @@ import (
     "github.com/terraform-linters/tflint-plugin-sdk/tflint"
 )
 
-type S3BackendLockfileRule struct {
+type BackendS3LockfileRule struct {
     tflint.DefaultRule
 }
 
-func NewS3BackendLockfileRule() *S3BackendLockfileRule {
-    return &S3BackendLockfileRule{}
+func NewBackendS3LockfileRule() *BackendS3LockfileRule {
+    return &BackendS3LockfileRule{}
 }
 
-func (r *S3BackendLockfileRule) Name() string {
-    return "s3_backend_lockfile"
+func (r *BackendS3LockfileRule) Name() string {
+    return "backend_s3_lockfile"
 }
 
-func (r *S3BackendLockfileRule) Enabled() bool {
+func (r *BackendS3LockfileRule) Enabled() bool {
     return true
 }
 
-func (r *S3BackendLockfileRule) Severity() tflint.Severity {
+func (r *BackendS3LockfileRule) Severity() tflint.Severity {
     return tflint.ERROR
 }
 
-func (r *S3BackendLockfileRule) Check(runner tflint.Runner) error {
+func (r *BackendS3LockfileRule) Check(runner tflint.Runner) error {
     // Describe the structure we care about:
     schema := &hclext.BodySchema{
         Blocks: []hclext.BlockSchema{
