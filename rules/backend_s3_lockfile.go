@@ -71,7 +71,7 @@ func (r *BackendS3LockfileRule) Check(runner tflint.Runner) error {
             if useLockAttr == nil {
                 runner.EmitIssue(
                     r,
-                    `S3 backend must set "use_lockfile = true" (native S3 locking)`,
+                    `S3 backend must set "use_lockfile = true" (native S3 locking, requires Terraform >= v1.11.0)`,
                     backendBlock.DefRange,
                 )
             } else {
@@ -80,7 +80,7 @@ func (r *BackendS3LockfileRule) Check(runner tflint.Runner) error {
                     if !lit.Val.True() {
                         runner.EmitIssue(
                             r,
-                            `"use_lockfile" must be true for S3 backend`,
+                            `"use_lockfile" must be true for S3 backend (requires Terraform >= v1.11.0)`,
                             useLockAttr.Range,
                         )
                     }
@@ -88,7 +88,7 @@ func (r *BackendS3LockfileRule) Check(runner tflint.Runner) error {
                     // Non-literal (var/locals) – disallow for backend anyway
                     runner.EmitIssue(
                         r,
-                        `"use_lockfile" in S3 backend must be a literal true`,
+                        `"use_lockfile" in S3 backend must be a literal true (requires Terraform >= v1.11.0)`,
                         useLockAttr.Range,
                     )
                 }
@@ -98,7 +98,7 @@ func (r *BackendS3LockfileRule) Check(runner tflint.Runner) error {
             if dynamoAttr != nil {
                 runner.EmitIssue(
                     r,
-                    `"dynamodb_table" locking is deprecated, use S3 native locking (use_lockfile) instead`,
+                    `"dynamodb_table" locking is deprecated, use S3 native locking ("use_lockfile = true", requires Terraform >= v1.11.0) instead`,
                     dynamoAttr.Range,
                 )
             }
