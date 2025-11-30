@@ -9,6 +9,12 @@ if [ -f .env ]; then
   export $(grep -v '^#' .env | xargs)
 fi
 
+# Clear dist directory for a clean build
+if [ -d dist ]; then
+  rm -rf dist
+fi
+mkdir -p dist
+
 platforms=(
   "linux/amd64"
   "linux/arm64"
