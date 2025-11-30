@@ -1,7 +1,6 @@
-# TFLint Ruleset Template
-[![Build Status](https://github.com/terraform-linters/tflint-ruleset-template/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/terraform-linters/tflint-ruleset-template/actions)
+# TFLint Backend Ruleset
 
-This is a template repository for building a custom ruleset. You can create a plugin repository from "Use this template". See also [Writing Plugins](https://github.com/terraform-linters/tflint/blob/master/docs/developer-guide/plugins.md).
+A TFLint plugin that provides rules for validating Terraform backend configurations. This ruleset helps ensure proper backend configuration practices, such as enforcing native S3 locking and preventing deprecated locking mechanisms.
 
 ## Requirements
 
@@ -16,7 +15,7 @@ You can install the plugin with `tflint --init`. Declare a config in `.tflint.hc
 plugin "backend" {
   enabled = true
 
-  version = "0.3.0"
+  version = "0.4.0"
   source  = "github.com/IamEnTm/tflint-ruleset-backend"
 
   signing_key = <<-KEY
